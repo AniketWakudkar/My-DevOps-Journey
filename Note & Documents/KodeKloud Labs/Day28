@@ -1,0 +1,64 @@
+**# Git Cherry Pick**
+
+Task Statement:
+The Nautilus application development team has been working on a project repository /opt/blog.git. This repo is cloned at **/usr/src/kodekloudrepos** on storage server in Stratos DC. They recently shared the following requirements with the DevOps team:
+
+There are two branches in this repository, master and feature. One of the developers is working on the feature branch and their work is still in progress, however they want to merge one of the commits from the feature branch to the master branch, the message for the commit that needs to be merged into master is **Update info.txt**. Accomplish this task for them, also remember to push your changes eventually.
+
+Here, Update info.txt commit needs to be cherry picked from feature branch to master branch
+
+Soloution :
+
+SSh to storage server 
+cd /usr/src/kodekloudrepos/blog/        #cloned from /opt/blog.git
+sudo git log --oneliner -all            #to check all commits 
+#copy the commit id of Update info.txt
+sudo git checkout master                #go to the branch where you want this specifix commit
+sudo git cherry-pich [commit Id]        #this command will pick the required Commit from Feature branch
+sudo git log --oneline                  #to check the commit has been merged into the master branch
+sudo git puch origin master     #push the changes into the /opt/blog.git 
+
+
+What is Cherry Pick?
+Taking a specific commit from a branch and appying it to another branch.
+
+Visual Example:
+
+master:     A --- B --- C
+                   \
+feature:            D --- E --- F --- G
+                          ↑
+                    We want only this commit!
+
+You want commit `E` in the master branch without taking `D`, `F`, or `G`.
+
+**After cherry-pick:**
+```
+master:     A --- B --- C --- E'
+                   \
+feature:            D --- E --- F --- G
+
+Syntax:   git cherry-pick <commit-hash>
+
+Why Use Cherry-Pick?
+1. Emergency Bug Fixes
+
+Bug fix is buried in a feature branch
+Need it in production NOW
+Don't want the incomplete feature
+
+2. Selective Code Transfer
+
+Want one specific change from another branch
+Don't want everything else
+
+3. Duplicate Good Work
+
+Same fix needed in multiple branches
+Copy it to each branch individually
+
+4. Undo Accidents
+
+Committed to wrong branch
+Cherry-pick to correct branch
+Delete from wrong branch
