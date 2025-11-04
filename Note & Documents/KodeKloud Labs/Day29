@@ -1,0 +1,9 @@
+SSh using max in storage server
+cd story/fox-and-grapes
+changes have been made by max in Story/fox-and-grapes branch
+now he wnat to commit the chnages into master branch
+but before that Max need to create Pull request
+and assigne the PR to Tom for review
+then login in gitea with tom creds and review the the commit and merge it the master branch.
+
+Task done.
