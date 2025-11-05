@@ -1,0 +1,23 @@
+Git Stash
+
+Restore the stash with stash!{1}
+
+one of the dev stasshed some inprogress chnages in repo /usr/src/kodekloudrepos/news
+
+Now they wan to rstore some of the stash chnages \
+
+git stash - save uncommitted chnages without committing them
+
+why use stash - switch branches with uncommitted chnages
+ex. youre working on feature A
+suddenly need to fix the urgent bug on master 
+but you have uncommitted chnages
+
+ git stash
+
+ git chekcout master   #switch branches
+ 
+ #fix the bug
+
+ git checkout feature A
+ git stash pop #get your chnages back
