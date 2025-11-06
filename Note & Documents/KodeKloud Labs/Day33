@@ -1,0 +1,36 @@
+Day 33: Resolve Git Merge Conflicts
+
+Sarah and Max were working on writting some stories which they have pushed to the repository. 
+Max has recently added some new changes and is trying to push them to the repository but he is facing some issues. 
+Below you can find more details:
+
+
+SSH into storage server using user max and password Max_pass123. 
+Under /home/max you will find the story-blog repository.
+Try to push the changes to the origin repo and fix the issues.
+The story-index.txt must have titles for all 4 stories. 
+Additionally, there is a typo in The Lion and the Mooose line where Mooose should be Mouse.
+
+there was a merge conflict in file story-index.txt
+
+as part of solution:
+git fetch
+git status
+
+#On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+nothing to commit, working directory clean#
+
+git pull origin master
+
+#From http://git.stratos.xfusioncorp.com/sarah/story-blog 
+#* branch master -> FETCH_HEAD Auto-merging story-index.txt 
+#CONFLICT (add/add): Merge conflict in story-index.txt Automatic merge failed; fix conflicts and then commit the result
+ vim story-index.txt
+
+edited the file
+git add story-index.txt
+git commit -m "Resolved conflict"
+git push origin master
