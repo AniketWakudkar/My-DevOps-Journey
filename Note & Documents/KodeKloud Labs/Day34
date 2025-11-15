@@ -1,0 +1,49 @@
+Day 34: Git Hook
+
+
+The Nautilus application development team was working on a git repository /opt/apps.git which is cloned under /usr/src/kodekloudrepos directory present on Storage server in Stratos DC. 
+The team want to setup a hook on this repository, please find below more details:
+
+
+
+1. Merge the feature branch into the master branch`, but before pushing your changes complete below point.
+
+2. Create a post-update hook in this git repository so that whenever any changes are pushed to the master branch, it creates a release tag with name release-2023-06-15, where 2023-06-15 is supposed to be the current date. For example if today is 20th June, 2023 then the release tag must be release-2023-06-20. Make sure you test the hook at least once and create a release tag for today's release.
+
+Finally remember to push your changes.
+Note: Perform this task using the natasha user, and ensure the repository or existing directory permissions are not altered.
+
+
+What is git hook?
+Script that git automatically runs at cetain point in the git workflow 
+such as: before a commit - after a push - before a merge
+
+- How Git Hooks Work
+
+Git hooks are stored in the .git/hooks directory of your repository.
+   - Each hook is just a script file (usually a shell script, but it can be written in any language)
+Hooks are triggered by specific Git actions — for example:
+   - pre-commit: runs before a commit is created.
+   - commit-msg: runs after you write a commit message but before the commit is finalized
+   - pre-push: runs before git push.
+   - Post-merge: runs after a successful merge.
+
+
+above task was veruy unpredictable as I have tried every options and solutions but it completed successfully with below,
+
+1. create post-update hook in /opt/cluster.git/hooks/ with script,
+   cd /opt/cluster.git/
+   tag=release-$(date +"%Y-%m-%d")
+   git tag $tag
+
+2. then merged the feature branch into the master 
+   git checkout master
+   git merge feature
+3. chmod +x /opt/cluster.git/hooks/post-update
+4. git push
+5. git tag
+
+/opt/cluster.git is a bare repository,
+
+its post-update hook runs after any push,and 
+the task does not require branch-specific logic or duplicate-tag checks
