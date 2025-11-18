@@ -1,0 +1,28 @@
+1. Install docker -ce and docker compose packages
+2. Initiate the docker service
+
+
+1. #Install the dnf-plugins-core package (which provides the commands to manage your DNF repositories) and set up the repository.
+
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+
+2. Install the docker packages latest version:
+
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+3. Start docker engine
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+4. Verify that the installation is successful by running the hello-world image:
+
+ sudo docker run hello-world
+
+5. In most modern systems:
+
+Docker Engine = installed
+
+Compose plugin = installed automatically
+
+✔ No extra installation needed
