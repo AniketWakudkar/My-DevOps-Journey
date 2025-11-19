@@ -1,0 +1,25 @@
+Pull Docker Image
+
+Pull busybox:musl image on App Server 1 in Stratos DC and re-tag (create new tag) 
+this image as busybox:local
+
+to tag an existing docker image use docker tag command:
+
+docker tag source_image target_image
+
+
+as a soltuing 
+
+1. dokcer pull busybox:musl
+2. dokcer tag busybox:musl busybox:local
+3. docker images --digests
+
+
+Why tag used?
+1. To rename the image
+2. To prepare an image for pushing it to registry
+3. To create multiple version of the same image
+4. To give images meaningful labels for testings
+REMEMBER: Tagging does Not dublicate the image.
+It just gives new name to same image ID.
+
